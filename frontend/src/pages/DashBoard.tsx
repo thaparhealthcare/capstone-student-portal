@@ -128,8 +128,8 @@ export default function Dashboard() {
             </h2>
 
             <div className="flex items-center gap-3 text-gray-700">
-              <div className="rounded-full bg-blue-200 p-2">
-                <Mail size={18} className="text-blue-600" />
+              <div className="rounded-full bg-orange-200 p-2">
+                <Mail size={18} className="text-orange-600" />
               </div>
               <span>Email: </span>
               <span className="font-medium">{student.email}</span>

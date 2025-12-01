@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, ClipboardList, Home, LogOut } from "lucide-react";
+import {
+  Calendar,
+  ClipboardList,
+  Home,
+  Info,
+  LogOut,
+  User,
+} from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { authApi } from "../api/authApi";
@@ -60,12 +67,33 @@ export default function Sidebar() {
           )}
         </NavLink>
 
-        <NavLink to="/book">
+        <NavLink to="/book-appointment">
           {({ isActive }) => (
             <div className={linkClass(isActive)}>
               <ClipboardList size={18} /> Book Appointment
             </div>
           )}
+        </NavLink>
+        <NavLink
+          to="/staff"
+          className={({ isActive }) =>
+            `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
+              isActive ? "bg-slate-800 text-white" : "hover:bg-slate-800/40"
+            }`
+          }
+        >
+          <User size={18} /> Doctors & Staff
+        </NavLink>
+
+        <NavLink
+          to="/info"
+          className={({ isActive }) =>
+            `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
+              isActive ? "bg-slate-800 text-white" : "hover:bg-slate-800/40"
+            }`
+          }
+        >
+          <Info size={18} /> OPD & Instructions
         </NavLink>
       </nav>
 

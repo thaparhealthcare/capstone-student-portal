@@ -1,10 +1,10 @@
-import { type Response } from "express";
-import { tryCatch } from "@/utils/try-catch.js";
 import { ErrorHandler } from "@/middlewares/error-handler.js";
 import { AvailabilityModel } from "@/models/availability.js";
 import { DoctorModel } from "@/models/doctor.js";
-import { validateId } from "@/utils/validate-id.js";
 import { type RequestWithStudent } from "@/types/request.js";
+import { tryCatch } from "@/utils/try-catch.js";
+import { validateId } from "@/utils/validate-id.js";
+import { type Response } from "express";
 
 const setAvailability = tryCatch(async (req: RequestWithStudent, res: Response) => {
   const { doctorId, startTime, endTime } = req.body;
@@ -54,4 +54,4 @@ const deleteAvailability = tryCatch(async (req: RequestWithStudent, res: Respons
   return res.status(200).json({ message: "Availability deleted successfully !" });
 });
 
-export { setAvailability, getDoctorAvailability, deleteAvailability };
+export { deleteAvailability, getDoctorAvailability, setAvailability };

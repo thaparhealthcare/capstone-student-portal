@@ -1,235 +1,235 @@
 {
-	"info": {
-		"_postman_id": "70c1edab-f85a-48ff-8af5-6aa0f3f8df82",
-		"name": "Student Portal",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "36868363"
-	},
-	"item": [
-		{
-			"name": "Health Check",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}"
-			},
-			"response": []
-		},
-		{
-			"name": "Check Login",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}/api/auth/check"
-			},
-			"response": []
-		},
-		{
-			"name": "Login",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"rollNumber\" : \"102203331\",\r\n    \"password\" : \"RaghavBhagat@06042004\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{serverURL}}/api/auth/login"
-			},
-			"response": []
-		},
-		{
-			"name": "Logout",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "{{serverURL}}/api/auth/logout"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Logged In Student",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}/api/auth/get-student"
-			},
-			"response": []
-		},
-		{
-			"name": "Update Student Password",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"oldPassword\" : \"RaghavBhagat@06042004\",\r\n    \"newPassword\" : \"Raghav@123\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{serverURL}}/api/student/update-password"
-			},
-			"response": []
-		},
-		{
-			"name": "Get All Doctors",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}/api/doctor/get-all-doctors"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Appointments by Student",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}/api/student/get-appointments/68ed964eea8f55dc0ad7a93f"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Appointments by Doctor",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}/api/doctor/get-appointments/68ed964eea8f55dc0ad7a93e"
-			},
-			"response": []
-		},
-		{
-			"name": "Set Availability",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"doctorId\": \"68ed964eea8f55dc0ad7a93e\",\r\n  \"startTime\": \"2025-11-30T09:00:00.000Z\",\r\n  \"endTime\": \"2025-11-30T12:00:00.000Z\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{serverURL}}/api/availability/set-availability"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Availability",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "{{serverURL}}/api/availability/get-availability/68ed964eea8f55dc0ad7a93e"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Availability",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "{{serverURL}}/api/availability/delete-availability/69024c0566d4a30daae16200"
-			},
-			"response": []
-		},
-		{
-			"name": "Book Appointment",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"doctorId\": \"68ed964eea8f55dc0ad7a93e\",\r\n  \"appointmentStartTime\": \"2025-11-30T09:30:00.000Z\",\r\n  \"appointmentEndTime\": \"2025-11-30T10:00:00.000Z\",\r\n  \"reason\": \"General health check-up before exams\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{serverURL}}/api/appointment/book-appointment"
-			},
-			"response": []
-		},
-		{
-			"name": "Update Appointment Status",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"status\": \"CONFIRMED\",\r\n    \"notes\": \"meet me\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{serverURL}}/api/appointment/update-appointment-status/69024e95aeb27f54d12ad2dd"
-			},
-			"response": []
-		},
-		{
-			"name": "Cancel Appointment",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "{{serverURL}}/api/appointment/cancel-appointment/69024e95aeb27f54d12ad2dd"
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "70c1edab-f85a-48ff-8af5-6aa0f3f8df82",
+    "name": "Student Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_exporter_id": "36868363"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}"
+      },
+      "response": []
+    },
+    {
+      "name": "Check Login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}/api/auth/check"
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"rollNumber\" : \"102203331\",\r\n    \"password\" : \"RaghavBhagat@06042004\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{serverURL}}/api/auth/login"
+      },
+      "response": []
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "url": "{{serverURL}}/api/auth/logout"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Logged In Student",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}/api/auth/get-student"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Student Password",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"oldPassword\" : \"RaghavBhagat@06042004\",\r\n    \"newPassword\" : \"Raghav@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{serverURL}}/api/student/update-password"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Doctors",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}/api/doctor/get-all-doctors"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Appointments by Student",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}/api/student/get-appointments/68ed964eea8f55dc0ad7a93f"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Appointments by Doctor",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}/api/doctor/get-appointments/68ed964eea8f55dc0ad7a93e"
+      },
+      "response": []
+    },
+    {
+      "name": "Set Availability",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"doctorId\": \"68ed964eea8f55dc0ad7a93e\",\r\n  \"startTime\": \"2025-11-30T09:00:00.000Z\",\r\n  \"endTime\": \"2025-11-30T12:00:00.000Z\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{serverURL}}/api/availability/set-availability"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Availability",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{serverURL}}/api/availability/get-availability/68ed964eea8f55dc0ad7a93e"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Availability",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": "{{serverURL}}/api/availability/delete-availability/69024c0566d4a30daae16200"
+      },
+      "response": []
+    },
+    {
+      "name": "Book Appointment",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"doctorId\": \"68ed964eea8f55dc0ad7a93e\",\r\n  \"appointmentStartTime\": \"2025-11-30T09:30:00.000Z\",\r\n  \"appointmentEndTime\": \"2025-11-30T10:00:00.000Z\",\r\n  \"reason\": \"General health check-up before exams\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{serverURL}}/api/appointment/book-appointment"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Appointment Status",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"status\": \"CONFIRMED\",\r\n    \"notes\": \"meet me\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{serverURL}}/api/appointment/update-appointment-status/69024e95aeb27f54d12ad2dd"
+      },
+      "response": []
+    },
+    {
+      "name": "Cancel Appointment",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": "{{serverURL}}/api/appointment/cancel-appointment/69024e95aeb27f54d12ad2dd"
+      },
+      "response": []
+    }
+  ]
 }

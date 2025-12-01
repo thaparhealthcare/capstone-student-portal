@@ -6,4 +6,5 @@ export const studentApi = {
       oldPassword,
       newPassword,
     }),
+  getAppointments: () => axiosClient.get("/api/student/get-appointments/me"),
 };

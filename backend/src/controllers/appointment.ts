@@ -1,13 +1,13 @@
-import type { Response } from "express";
-import { tryCatch } from "@/utils/try-catch.js";
 import { ErrorHandler } from "@/middlewares/error-handler.js";
 import { AppointmentModel } from "@/models/appointment.js";
-import { StudentModel } from "@/models/student.js";
-import { DoctorModel } from "@/models/doctor.js";
 import { AvailabilityModel } from "@/models/availability.js";
+import { DoctorModel } from "@/models/doctor.js";
+import { StudentModel } from "@/models/student.js";
 import { type RequestWithStudent } from "@/types/request.js";
-import { validateId } from "@/utils/validate-id.js";
 import { IAppointmentStatus } from "@/types/types.js";
+import { tryCatch } from "@/utils/try-catch.js";
+import { validateId } from "@/utils/validate-id.js";
+import type { Response } from "express";
 
 const bookAppointment = tryCatch(async (req: RequestWithStudent, res: Response) => {
   const { doctorId, appointmentStartTime, appointmentEndTime, reason } = req.body;
@@ -116,4 +116,4 @@ const cancelAppointment = tryCatch(async (req: RequestWithStudent, res: Response
   return res.status(200).json({ message: "Appointment cancelled successfully !" });
 });
 
-export { bookAppointment, updateAppointmentStatus, cancelAppointment };
+export { bookAppointment, cancelAppointment, updateAppointmentStatus };

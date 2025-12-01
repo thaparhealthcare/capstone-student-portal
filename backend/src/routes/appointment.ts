@@ -1,10 +1,10 @@
-import express from "express";
-import { isLoggedIn } from "@/middlewares/auth.js";
 import {
   bookAppointment,
   cancelAppointment,
   updateAppointmentStatus,
 } from "@/controllers/appointment.js";
+import { isLoggedIn } from "@/middlewares/auth.js";
+import express from "express";
 
 const router = express.Router();
 
