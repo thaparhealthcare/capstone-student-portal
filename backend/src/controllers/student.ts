@@ -1,12 +1,12 @@
-import { type Response } from "express";
-import { type RequestWithStudent } from "@/types/request.js";
-import bcrypt from "bcrypt";
-import { tryCatch } from "@/utils/try-catch.js";
-import { StudentModel } from "@/models/student.js";
-import { IStudent } from "@/types/types.js";
 import { ErrorHandler } from "@/middlewares/error-handler.js";
-import { getDefaultPassword } from "@/utils/default-password.js";
 import { AppointmentModel } from "@/models/appointment.js";
+import { StudentModel } from "@/models/student.js";
+import { type RequestWithStudent } from "@/types/request.js";
+import { IStudent } from "@/types/types.js";
+import { getDefaultPassword } from "@/utils/default-password.js";
+import { tryCatch } from "@/utils/try-catch.js";
+import bcrypt from "bcrypt";
+import { type Response } from "express";
 
 const updatePassword = tryCatch(async (req: RequestWithStudent, res: Response) => {
   const oldPassword: string = req.body.oldPassword;
@@ -47,4 +47,4 @@ const getStudentAppointments = tryCatch(async (req: RequestWithStudent, res: Res
   return res.status(200).json(appointments);
 });
 
-export { updatePassword, getStudentAppointments };
+export { getStudentAppointments, updatePassword };

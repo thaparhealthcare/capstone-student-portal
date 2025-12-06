@@ -10,11 +10,6 @@ import cors from "cors";
 import { configDotenv } from "dotenv";
 import express, { type Request, type Response } from "express";
 import morgan from "morgan";
-// import {
-//   addDummyDoctors,
-//   addDummyStudent,
-//   addYearAvailabilityForAllDoctors,
-// } from "./seed/dummy-data.js";
 
 const app = express();
 configDotenv({ path: ".env", quiet: true });
@@ -33,9 +28,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// await addDummyStudent();
-// await addDummyDoctors();
-// await addYearAvailabilityForAllDoctors();
 app.get("/", (_req: Request, res: Response) => {
   res.status(200).send("This app was created using `npx create-types-backend`");
 });

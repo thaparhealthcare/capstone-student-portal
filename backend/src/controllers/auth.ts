@@ -1,13 +1,13 @@
-import { type Request, type Response } from "express";
-import bcrypt from "bcrypt";
-import { tryCatch } from "@/utils/try-catch.js";
-import { StudentModel } from "@/models/student.js";
+import { cookieOptions } from "@/constants/cookie-options.js";
 import { ErrorHandler } from "@/middlewares/error-handler.js";
-import { generateToken } from "@/utils/generate-token.js";
-import { getDefaultPassword } from "@/utils/default-password.js";
+import { StudentModel } from "@/models/student.js";
 import { type RequestWithStudent } from "@/types/request.js";
 import { type IStudent } from "@/types/types.js";
-import { cookieOptions } from "@/constants/cookie-options.js";
+import { getDefaultPassword } from "@/utils/default-password.js";
+import { generateToken } from "@/utils/generate-token.js";
+import { tryCatch } from "@/utils/try-catch.js";
+import bcrypt from "bcrypt";
+import { type Request, type Response } from "express";
 
 const checkToken = (req: Request, res: Response) => {
   const token = req.cookies?.token;
@@ -52,4 +52,4 @@ const getLoggedInStudent = tryCatch(async (req: RequestWithStudent, res: Respons
   return res.status(200).json(student);
 });
 
-export { checkToken, login, logout, getLoggedInStudent };
+export { checkToken, getLoggedInStudent, login, logout };

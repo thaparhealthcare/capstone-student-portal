@@ -1,6 +1,6 @@
-import express from "express";
-import { isLoggedIn } from "@/middlewares/auth.js";
 import { getAllDoctors, getDoctorAppointments } from "@/controllers/doctor.js";
+import { isLoggedIn } from "@/middlewares/auth.js";
+import express from "express";
 
 const router = express.Router();
 

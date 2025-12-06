@@ -1,9 +1,9 @@
-import type { Request, Response } from "express";
-import { tryCatch } from "@/utils/try-catch.js";
 import { ErrorHandler } from "@/middlewares/error-handler.js";
-import { DoctorModel } from "@/models/doctor.js";
 import { AppointmentModel } from "@/models/appointment.js";
+import { DoctorModel } from "@/models/doctor.js";
+import { tryCatch } from "@/utils/try-catch.js";
 import { validateId } from "@/utils/validate-id.js";
+import type { Request, Response } from "express";
 
 const getAllDoctors = tryCatch(async (_req: Request, res: Response) => {
   const doctors = await DoctorModel.find({});

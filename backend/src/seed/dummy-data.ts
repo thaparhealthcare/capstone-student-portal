@@ -1,42 +1,3 @@
-// import { DoctorModel } from "@/models/doctor.js";
-// import { StudentModel } from "@/models/student.js";
-// import { IBloodGroup, IGender } from "@/types/types.js";
-
-// const addDummyStudent = async () => {
-//   const student = await StudentModel.create({
-//     rollNumber: "102203331",
-//     name: "Raghav Bhagat",
-//     email: "rbhagat_be22@thapar.edu",
-//     password: "RaghavBhagat@06042004",
-//     phone: "7087394178",
-//     gender: IGender.MALE,
-//     dob: new Date("2004-04-06"),
-//     department: "COE",
-//     hostel: "M",
-//     roomNumber: "C-204",
-//     yearOfStudy: 4,
-//     emergencyContact: "7087394178",
-//     bloodGroup: IBloodGroup.O_POS,
-//   });
-
-//   console.log("Dummy student added:", student);
-// };
-
-// const addDummyDoctor = async () => {
-//   const doctor = await DoctorModel.create({
-//     name: "Dr. Zulfikar Qureshi",
-//     email: "zulfikar.qureshi@thapar.edu",
-//     phone: "9876543210",
-//     gender: IGender.MALE,
-//     specialization: "General Physician",
-//     designation: "Senior Medical Officer",
-//   });
-
-//   console.log("Dummy doctor added:", doctor);
-// };
-
-// export { addDummyDoctor, addDummyStudent };
-
 import { AvailabilityModel } from "@/models/availability.js";
 import { DoctorModel } from "@/models/doctor.js";
 import { StudentModel } from "@/models/student.js";
@@ -53,7 +14,7 @@ const addDummyStudent = async () => {
     rollNumber: "102203331",
     name: "Raghav Bhagat",
     email: "rbhagat_be22@thapar.edu",
-    password: "RaghavBhagat@06042004", // will be hashed on first update
+    password: "RaghavBhagat@06042004",
     phone: "7087394178",
     gender: IGender.MALE,
     dob: new Date("2004-04-06"),
@@ -116,11 +77,6 @@ const addDummyDoctors = async () => {
   }
 };
 
-/**
- * OPTIONAL:
- * Create availability for ALL doctors:
- * Every day for 1 year, 09:00–12:00 (UTC) for each doctor
- */
 const addYearAvailabilityForAllDoctors = async () => {
   const doctors = await DoctorModel.find({});
   if (!doctors.length) {
@@ -129,7 +85,7 @@ const addYearAvailabilityForAllDoctors = async () => {
   }
 
   const today = new Date();
-  today.setUTCHours(0, 0, 0, 0); // normalize to midnight UTC
+  today.setUTCHours(0, 0, 0, 0);
 
   const DAYS = 365;
   const START_HOUR = 9; // 09:00
