@@ -28,8 +28,8 @@ export default function Sidebar() {
     `flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 
      ${
        isActive
-         ? "bg-slate-800 text-white shadow-md shadow-slate-800/50"
-         : "hover:bg-slate-800/40 hover:scale-[1.03] hover:text-white"
+         ? "bg-slate-800 text-white hover:translate-x-1 shadow-md shadow-slate-800/50"
+         : "hover:bg-slate-800/40 hover:translate-x-1 hover:text-white"
      }`;
 
   return (
@@ -37,7 +37,7 @@ export default function Sidebar() {
       {/* Logo + Name */}
       <div className="flex items-center gap-3 border-b border-slate-700 px-6 py-7">
         <img
-          src="/logo.png"
+          src="/logo.jpg"
           alt="TIET Logo"
           className="h-12 w-12 rounded-3xl object-contain drop-shadow-md"
         />
@@ -74,26 +74,21 @@ export default function Sidebar() {
             </div>
           )}
         </NavLink>
-        <NavLink
-          to="/staff"
-          className={({ isActive }) =>
-            `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
-              isActive ? "bg-slate-800 text-white" : "hover:bg-slate-800/40"
-            }`
-          }
-        >
-          <User size={18} /> Doctors & Staff
+
+        <NavLink to="/staff">
+          {({ isActive }) => (
+            <div className={linkClass(isActive)}>
+              <User size={18} /> Doctors & Staff
+            </div>
+          )}
         </NavLink>
 
-        <NavLink
-          to="/info"
-          className={({ isActive }) =>
-            `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
-              isActive ? "bg-slate-800 text-white" : "hover:bg-slate-800/40"
-            }`
-          }
-        >
-          <Info size={18} /> OPD & Instructions
+        <NavLink to="/info">
+          {({ isActive }) => (
+            <div className={linkClass(isActive)}>
+              <Info size={18} /> OPD & Instructions
+            </div>
+          )}
         </NavLink>
       </nav>
 

@@ -1,66 +1,51 @@
 import { ErrorHandler } from "@/middlewares/error-handler.js";
 import { AppointmentModel } from "@/models/appointment.js";
-import { AvailabilityModel } from "@/models/availability.js";
-import { DoctorModel } from "@/models/doctor.js";
-import { StudentModel } from "@/models/student.js";
+import { StudentModel } from "@/models/student";
 import { type RequestWithStudent } from "@/types/request.js";
 import { IAppointmentStatus } from "@/types/types.js";
 import { tryCatch } from "@/utils/try-catch.js";
 import { validateId } from "@/utils/validate-id.js";
+import axios from "axios";
 import type { Response } from "express";
 
-const bookAppointment = tryCatch(async (req: RequestWithStudent, res: Response) => {
-  const { doctorId, appointmentStartTime, appointmentEndTime, reason } = req.body;
-  const { studentId } = req;
+import { RequestHandler } from "express";
 
-  if (!doctorId || !appointmentStartTime || !appointmentEndTime)
-    throw new ErrorHandler(400, "All fields are required !");
+export const bookAppointment: RequestHandler = tryCatch(async (req: RequestWithStudent, res) => {
+  const { doctorId, date, startTime, endTime, reason } = req.body;
 
-  const doctor = await DoctorModel.findById(doctorId);
-  if (!doctor) throw new ErrorHandler(404, "Doctor not found !");
+  const studentId = req.studentId;
 
+  if (!studentId) {
+    throw new ErrorHandler(401, "Unauthorized");
+  }
+
+  if (!doctorId || !date || !startTime || !endTime || !reason) {
+    throw new ErrorHandler(400, "All fields are required");
+  }
   const student = await StudentModel.findById(studentId);
-  if (!student) throw new ErrorHandler(404, "Student not found !");
+  if (!student) {
+    return res.status(404).json({ message: "Student not found" });
+  }
 
-  const start = new Date(appointmentStartTime);
-  const end = new Date(appointmentEndTime);
-  if (isNaN(start.getTime()) || isNaN(end.getTime()))
-    throw new ErrorHandler(400, "Invalid date format !");
-  if (start >= end) throw new ErrorHandler(400, "Start time must be before end time !");
-
-  // check doctor availability
-  const available = await AvailabilityModel.findOne({
+  // 👉 Doctor backend call
+  const response = await axios.post(`${process.env.DOCTOR_API_URL}/doctor/appointment/book`, {
     doctorId,
-    startTime: { $lte: start },
-    endTime: { $gte: end },
-  });
-  if (!available) throw new ErrorHandler(400, "Doctor is not available at the selected time !");
-
-  // check overlapping appointments
-  const overlapping = await AppointmentModel.findOne({
-    doctorId,
-    appointmentDate: { $lt: end },
-    endTime: { $gt: start },
-    status: { $ne: IAppointmentStatus.CANCELLED },
-  });
-  if (overlapping) throw new ErrorHandler(400, "Selected time slot already booked !");
-
-  const appointment = await AppointmentModel.create({
-    studentId,
-    doctorId,
-    appointmentDate: start,
-    endTime: end,
+    student: {
+      id: student._id,
+      name: student.name,
+      rollNumber: student.rollNumber,
+      department: student.department,
+      year: student.year,
+      email: student.email,
+      phone: student.phone,
+    },
+    date,
+    startTime,
+    endTime,
     reason,
-    status: IAppointmentStatus.PENDING,
   });
 
-  await doctor.updateOne({ $push: { appointments: appointment._id } });
-  await student.updateOne({ $push: { appointments: appointment._id } });
-
-  return res.status(201).json({
-    message: "Appointment booked successfully !",
-    appointment,
-  });
+  return res.status(201).json(response.data);
 });
 
 const updateAppointmentStatus = tryCatch(async (req: RequestWithStudent, res: Response) => {
@@ -116,4 +101,4 @@ const cancelAppointment = tryCatch(async (req: RequestWithStudent, res: Response
   return res.status(200).json({ message: "Appointment cancelled successfully !" });
 });
 
-export { bookAppointment, cancelAppointment, updateAppointmentStatus };
+export { cancelAppointment, updateAppointmentStatus };

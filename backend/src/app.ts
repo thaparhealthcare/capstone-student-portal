@@ -3,13 +3,13 @@ import { errorHandler } from "@/middlewares/error-handler.js";
 import { appointmentRouter } from "@/routes/appointment.js";
 import { authRouter } from "@/routes/auth.js";
 import { availabilityRouter } from "@/routes/availability.js";
-import { doctorRouter } from "@/routes/doctor.js";
 import { studentRouter } from "@/routes/student.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { configDotenv } from "dotenv";
 import express, { type Request, type Response } from "express";
 import morgan from "morgan";
+import { doctorRouter } from "./routes/doctor";
 
 const app = express();
 configDotenv({ path: ".env", quiet: true });
