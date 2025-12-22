@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
+import { cookieOptions } from "@/constants/cookie-options.js";
+import { StudentModel } from "@/models/student.js";
 import { type RequestWithStudent } from "@/types/request.js";
 import { type NextFunction, type Response } from "express";
-import { StudentModel } from "@/models/student.js";
-import { cookieOptions } from "@/constants/cookie-options.js";
+import jwt from "jsonwebtoken";
 
 interface JwtPayloadTypes {
   studentId: string;

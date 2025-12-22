@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ui/ProtectedRoute";
-import BookAppointment from "./pages/BookAppointment";
 import Dashboard from "./pages/DashBoard";
 import HealthInfo from "./pages/HealthInfo";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MyAppointments from "./pages/MyAppointments";
 import Staff from "./pages/Staff";
+import BookAppointment from "./pages/student/BookAppointment";
 
 export function App() {
   return (

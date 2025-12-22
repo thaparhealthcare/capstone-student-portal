@@ -47,4 +47,5 @@ const getStudentAppointments = tryCatch(async (req: RequestWithStudent, res: Res
   return res.status(200).json(appointments);
 });
 
+
 export { updatePassword, getStudentAppointments };

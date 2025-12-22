@@ -7,8 +7,10 @@ export default function Login() {
   const { login, loading, error } = useAuth();
   const navigate = useNavigate();
 
-  const [rollNumber, setRollNumber] = useState("102203331");
-  const [password, setPassword] = useState("RaghavBhagat@06042004");
+  // const [rollNumber, setRollNumber] = useState("102203331");
+  const [rollNumber, setRollNumber] = useState("");
+  // const [password, setPassword] = useState("RaghavBhagat@06042004");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -37,7 +37,7 @@ export default function Sidebar() {
       {/* Logo + Name */}
       <div className="flex items-center gap-3 border-b border-slate-700 px-6 py-7">
         <img
-          src="/logo.png"
+          src="/logo.jpg"
           alt="TIET Logo"
           className="h-12 w-12 rounded-3xl object-contain drop-shadow-md"
         />

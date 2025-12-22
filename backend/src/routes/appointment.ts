@@ -8,7 +8,7 @@ import express from "express";
 
 const router = express.Router();
 
-router.post("/book-appointment", isLoggedIn, bookAppointment);
+router.post("/book", isLoggedIn, bookAppointment);
 router.patch("/update-appointment-status/:appointmentId", isLoggedIn, updateAppointmentStatus);
 router.delete("/cancel-appointment/:appointmentId", isLoggedIn, cancelAppointment);
 
