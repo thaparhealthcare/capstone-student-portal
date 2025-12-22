@@ -4,9 +4,9 @@ import Dashboard from "./pages/DashBoard";
 import HealthInfo from "./pages/HealthInfo";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import MyAppointments from "./pages/MyAppointments";
 import Staff from "./pages/Staff";
 import BookAppointment from "./pages/student/BookAppointment";
+import StudentAppointments from "./pages/student/StudentAppointments";
 
 export function App() {
   return (
@@ -34,7 +34,7 @@ export function App() {
           path="/appointments"
           element={
             <ProtectedRoute>
-              <MyAppointments />
+              <StudentAppointments />
             </ProtectedRoute>
           }
         />

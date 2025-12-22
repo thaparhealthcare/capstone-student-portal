@@ -11,8 +11,8 @@ import express, { type Request, type Response } from "express";
 import morgan from "morgan";
 import { doctorRouter } from "./routes/doctor";
 
-const app = express();
 configDotenv({ path: ".env", quiet: true });
+const app = express();
 await connectDB();
 
 app.use(
